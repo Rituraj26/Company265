@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (max-width: 62.5em) {
+    html {
+      font-size: 45%; } }
+  @media only screen and (max-width: 37.5em) {
+    html {
+      font-size: 37%; } }
+
+body {
+  font-family: "Nunito", sans-serif;
+  color: #53483c;
+  font-weight: 300;
+  line-height: 1.6; }
+
+.container {
+  display: grid;
+  grid-template-rows: 15vh 85vh repeat(7, min-content);
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 12rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+  justify-items: center; }
+
+.navbar {
+  grid-column: full-start / full-end;
+  width: 100%;
+  background-color: red;
+  padding: 0 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .navbar__links {
+    list-style: none;
+    display: flex;
+    width: 45%;
+    justify-content: space-between; }
+    .navbar__links li {
+      text-decoration: none; }
+
+.header {
+  grid-column: full-start / full-end;
+  background-color: yellow; }

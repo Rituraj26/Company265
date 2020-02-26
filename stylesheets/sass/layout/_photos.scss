@@ -1,0 +1,28 @@
+.media {
+  grid-column: center-start / center-end;
+  width: 100%;
+  background: rgb(240, 240, 240);
+  background: linear-gradient(
+    0deg,
+    rgba(240, 240, 240, 1) 39%,
+    rgba(255, 255, 255, 1) 60%
+  );
+  border: 1px solid $color-grey-dark-1;
+  padding: 2rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 7rem;
+
+  &__details {
+    display: grid;
+    grid-gap: 2rem;
+    padding: 0 5rem;
+
+    &--grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+  }
+}

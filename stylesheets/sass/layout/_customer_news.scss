@@ -1,0 +1,20 @@
+.customers_news {
+  grid-column: center-start / center-end;
+  width: 100%;
+  padding: 4rem 0;
+
+  display: grid;
+  grid-template-columns: 60% 35%;
+  grid-gap: 5rem;
+
+  &__container {
+    display: grid;
+    grid-template-rows: repeat(2, min-content) repeat(2, max-content);
+    grid-gap: 2rem;
+
+    span {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+}

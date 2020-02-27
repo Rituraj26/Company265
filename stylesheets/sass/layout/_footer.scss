@@ -20,6 +20,11 @@
     li {
       font-size: 1.6rem;
       text-transform: uppercase;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
     }
   }
 

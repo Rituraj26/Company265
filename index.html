@@ -194,44 +194,84 @@
                 <div class="media__details--grid">
                     <img
                         src="./resources/img/photo_1.jpg"
-                        alt="photo 1"
-                        style="max-width:100%;cursor:pointer"
-                        onclick="onClick(this)"
-                        class="modal__photo--hover-opacity"
+                        style="width:100%"
+                        onclick="openModal();currentSlide(1)"
+                        class="hover-shadow cursor"
                     />
+
                     <img
                         src="./resources/img/photo_2.jpg"
-                        alt="photo 2"
-                        style="max-width:100%;cursor:pointer"
-                        onclick="onClick(this)"
-                        class="modal__photo--hover-opacity"
+                        style="width:100%"
+                        onclick="openModal();currentSlide(2)"
+                        class="hover-shadow cursor"
                     />
+
                     <img
                         src="./resources/img/photo_3.jpg"
-                        alt="photo 3"
-                        style="max-width:100%;cursor:pointer"
-                        onclick="onClick(this)"
-                        class="modal__photo--hover-opacity"
+                        style="width:100%"
+                        onclick="openModal();currentSlide(3)"
+                        class="hover-shadow cursor"
                     />
+
                     <img
                         src="./resources/img/photo_4.jpg"
-                        alt="photo 4"
-                        style="max-width:100%;cursor:pointer"
-                        onclick="onClick(this)"
-                        class="modal__photo--hover-opacity"
+                        style="width:100%"
+                        onclick="openModal();currentSlide(4)"
+                        class="hover-shadow cursor"
                     />
                 </div>
-                <div
-                    id="modal01"
-                    class="modal__photo"
-                    onclick="this.style.display='none'"
-                >
-                    <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
+                <div id="myModal" class="modal__photo">
+                    <span class="close cursor" onclick="closeModal()"
+                        >&times;</span
+                    >
                     <div class="modal__photo--content">
-                        <img class="prev" src="./resources/img/prev.png" />
-                        <img id="img01" style="max-width:100%" />
-                        <img class="next" src="./resources/img/next.png" />
+                        <div class="mySlides">
+                            <div class="numbertext">1 / 4</div>
+                            <img
+                                src="./resources/img/photo_1.jpg"
+                                style="width:100%"
+                            />
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">2 / 4</div>
+                            <img
+                                src="./resources/img/photo_2.jpg"
+                                style="width:100%"
+                            />
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">3 / 4</div>
+                            <img
+                                src="./resources/img/photo_3.jpg"
+                                style="width:100%"
+                            />
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">4 / 4</div>
+                            <img
+                                src="./resources/img/photo_4.jpg"
+                                style="width:100%"
+                            />
+                        </div>
+
+                        <img
+                            class="prev"
+                            src="./resources/img/prev.png"
+                            onclick="plusSlides(-1)"
+                        />
+                        <img
+                            class="next"
+                            src="./resources/img/next.png"
+                            onclick="plusSlides(1)"
+                        />
+
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
                     </div>
                 </div>
                 <p class="paragraph">
@@ -247,7 +287,7 @@
                 <div class="media__details--grid media-video">
                     <figure class="video-fig">
                         <img
-                            src="./resources/img/photo_1.jpg"
+                            src="./resources/img/video-1.png"
                             alt="video 1"
                             class="video-img"
                         />
@@ -262,7 +302,7 @@
 
                     <figure class="video-fig">
                         <img
-                            src="./resources/img/photo_2.jpg"
+                            src="./resources/img/video-2.png"
                             alt="video 2"
                             class="video-img"
                         />
@@ -277,7 +317,7 @@
 
                     <figure class="video-fig">
                         <img
-                            src="./resources/img/photo_3.jpg"
+                            src="./resources/img/video-3.png"
                             alt="video 3"
                             class="video-img"
                         />
@@ -292,7 +332,7 @@
 
                     <figure class="video-fig">
                         <img
-                            src="./resources/img/photo_4.jpg"
+                            src="./resources/img/video-4.png"
                             alt="video 4"
                             class="video-img"
                         />
@@ -437,6 +477,50 @@
             function onClick(element) {
                 document.getElementById("img01").src = element.src;
                 document.getElementById("modal01").style.display = "block";
+            }
+
+            function openModal() {
+                document.getElementById("myModal").style.display = "block";
+            }
+
+            function closeModal() {
+                document.getElementById("myModal").style.display = "none";
+            }
+
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+                showSlides((slideIndex += n));
+            }
+
+            function currentSlide(n) {
+                showSlides((slideIndex = n));
+            }
+
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("demo");
+                var captionText = document.getElementById("caption");
+                if (n > slides.length) {
+                    slideIndex = 1;
+                }
+                if (n < 1) {
+                    slideIndex = slides.length;
+                }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(
+                        " active",
+                        ""
+                    );
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+                captionText.innerHTML = dots[slideIndex - 1].alt;
             }
         </script>
     </body>
